@@ -11,7 +11,7 @@ impl<'a> KWIndex<'a> {
    pub fn extend_from_text(mut self, target: &'a str) -> Self {
        for mut s in target.split_whitespace() {
            let mut word = true;
-           s = s.trim_matches(|c: char| !c.is_alphabetic() || c == ' ');
+           s = s.trim_matches(|c: char| !c.is_alphabetic());
            if s.len() > 0 {
                for c in s.chars() {
                    if !c.is_alphabetic(){
