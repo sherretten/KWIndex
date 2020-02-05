@@ -8,8 +8,7 @@ fn test_empty_struct() {
 
 #[test]
 fn test_hello_world() {
-    let index = kwindex::KWIndex::new()
-        .extend_from_text("Hello world.");
+    let index = kwindex::KWIndex::new().extend_from_text("Hello world.");
 
     assert_eq!(false, index.is_empty());
     assert_eq!(2, index.len());
@@ -18,8 +17,7 @@ fn test_hello_world() {
 
 #[test]
 fn test_punctuation_all() {
-    let index = kwindex::KWIndex::new()
-        .extend_from_text("let's don't shouldn't won't");
+    let index = kwindex::KWIndex::new().extend_from_text("let's don't shouldn't won't");
 
     assert_eq!(true, index.is_empty());
     assert_eq!(0, index.len());
@@ -27,8 +25,7 @@ fn test_punctuation_all() {
 
 #[test]
 fn test_punctuation_mixed() {
-    let index = kwindex::KWIndex::new()
-        .extend_from_text("let's do and say we didn't.");
+    let index = kwindex::KWIndex::new().extend_from_text("let's do and say we didn't.");
 
     assert_eq!(false, index.is_empty());
     assert_eq!(4, index.len());
@@ -38,8 +35,8 @@ fn test_punctuation_mixed() {
 
 #[test]
 fn test_capitalization() {
-    let index = kwindex::KWIndex::new()
-        .extend_from_text("The simple things are the best things in life.");
+    let index =
+        kwindex::KWIndex::new().extend_from_text("The simple things are the best things in life.");
 
     assert_eq!(false, index.is_empty());
     assert_eq!(9, index.len());
@@ -60,8 +57,7 @@ fn test_punctuation_variety() {
 
 #[test]
 fn incorrect_spacing() {
-    let index = kwindex::KWIndex::new()
-        .extend_from_text("Hello sun,moon,and stars!");
+    let index = kwindex::KWIndex::new().extend_from_text("Hello sun,moon,and stars!");
 
     assert_eq!(false, index.is_empty());
     assert_eq!(2, index.len());
@@ -71,8 +67,7 @@ fn incorrect_spacing() {
 
 #[test]
 fn punctuation_before_word() {
-    let index = kwindex::KWIndex::new()
-        .extend_from_text("'these ;are ?words");
+    let index = kwindex::KWIndex::new().extend_from_text("'these ;are ?words");
 
     assert_eq!(false, index.is_empty());
     assert_eq!(3, index.len());
@@ -83,8 +78,7 @@ fn punctuation_before_word() {
 
 #[test]
 fn extra_space() {
-    let index = kwindex::KWIndex::new()
-        .extend_from_text("   extra      spaces .");
+    let index = kwindex::KWIndex::new().extend_from_text("   extra      spaces .");
 
     assert_eq!(false, index.is_empty());
     assert_eq!(2, index.len());
@@ -93,8 +87,7 @@ fn extra_space() {
 
 #[test]
 fn duplicates() {
-    let index = kwindex::KWIndex::new()
-        .extend_from_text("a b c A b C b A");
+    let index = kwindex::KWIndex::new().extend_from_text("a b c A b C b A");
 
     assert_eq!(false, index.is_empty());
     assert_eq!(8, index.len());
